@@ -17,7 +17,7 @@
   <form method="post" action="add2.php" enctype="multipart/form-data">
     Tipo vivienda:
     <?php
-    $mysql=new mysqli("localhost","457327","lunaylaky2017","457327");
+     $mysql =new mysqli($HOST,$USER,$PASSWORD,$DATABASE);
       if ($mysql->connect_error)
         die("Problemas con la conexion a la base de datos");
       $registros=$mysql->query("select COLUMN_TYPE from INFORMATION_SCHEMA.COLUMNS where TABLE_NAME='viviendas' and COLUMN_NAME='tipo_vivienda'") or
@@ -35,7 +35,7 @@
     Zona vivienda:
     <?php
       //get enum value from database
-      $mysql =new mysqli("localhost","457327","lunaylaky2017","457327");
+       $mysql =new mysqli($HOST,$USER,$PASSWORD,$DATABASE);
       if ($mysql->connect_error)
         die("Problemas con la conexion a la base de datos");
       $registros=$mysql->query("select COLUMN_TYPE from INFORMATION_SCHEMA.COLUMNS where TABLE_NAME='viviendas' and COLUMN_NAME='zona_vivienda'") or
@@ -57,7 +57,7 @@
     Numero de dormitorios:
     <?php
     //get enum value from database with number 3 like default value
-    $mysql =new mysqli("localhost","457327","lunaylaky2017","457327");
+     $mysql =new mysqli($HOST,$USER,$PASSWORD,$DATABASE);
     if ($mysql->connect_error)
       die("Problemas con la conexion a la base de datos");
     $registros=$mysql->query("select COLUMN_TYPE from INFORMATION_SCHEMA.COLUMNS where TABLE_NAME='viviendas' and COLUMN_NAME='ndormitorios_vivienda'") or
@@ -85,7 +85,7 @@
     Extras vivienda:
     <?php
     //get enum value from database
-    $mysql =new mysqli("localhost","457327","lunaylaky2017","457327");
+    $mysql =new mysqli($HOST,$USER,$PASSWORD,$DATABASE);
     if ($mysql->connect_error)
       die("Problemas con la conexion a la base de datos");
     $registros=$mysql->query("select COLUMN_TYPE from INFORMATION_SCHEMA.COLUMNS where TABLE_NAME='viviendas' and COLUMN_NAME='extras_vivienda'") or
