@@ -1,5 +1,5 @@
 <?php
-   $mysql=new mysqli("$host","$user","$password","$database");
+   $mysql=new mysqli($host,$user,$password,$database);
 	if ($mysql->connect_error)
 	  die("Problemas con la conexion a la base de datos");
 
