@@ -17,7 +17,7 @@
   <form method="post" action="add2.php" enctype="multipart/form-data">
     Tipo vivienda:
     <?php
-     $mysql =new mysqli($HOST,$USER,$PASSWORD,$DATABASE);
+    $mysql=new mysqli($host,$user,$password,$database);
       if ($mysql->connect_error)
         die("Problemas con la conexion a la base de datos");
       $registros=$mysql->query("select COLUMN_TYPE from INFORMATION_SCHEMA.COLUMNS where TABLE_NAME='viviendas' and COLUMN_NAME='tipo_vivienda'") or
@@ -35,7 +35,7 @@
     Zona vivienda:
     <?php
       //get enum value from database
-       $mysql =new mysqli($HOST,$USER,$PASSWORD,$DATABASE);
+      $mysql=new mysqli($host,$user,$password,$database);
       if ($mysql->connect_error)
         die("Problemas con la conexion a la base de datos");
       $registros=$mysql->query("select COLUMN_TYPE from INFORMATION_SCHEMA.COLUMNS where TABLE_NAME='viviendas' and COLUMN_NAME='zona_vivienda'") or
@@ -57,7 +57,7 @@
     Numero de dormitorios:
     <?php
     //get enum value from database with number 3 like default value
-     $mysql =new mysqli($HOST,$USER,$PASSWORD,$DATABASE);
+    $mysql=new mysqli($host,$user,$password,$database);
     if ($mysql->connect_error)
       die("Problemas con la conexion a la base de datos");
     $registros=$mysql->query("select COLUMN_TYPE from INFORMATION_SCHEMA.COLUMNS where TABLE_NAME='viviendas' and COLUMN_NAME='ndormitorios_vivienda'") or
@@ -81,11 +81,14 @@
     Tamaño vivienda:
     <input type="text" name="tamano_vivienda" required>
     <br>
+    Foto de la vivienda:
+    <input type="file" name="foto_vivienda" required>
+    <br>
 
     Extras vivienda:
     <?php
     //get enum value from database
-    $mysql =new mysqli($HOST,$USER,$PASSWORD,$DATABASE);
+    $mysql=new mysqli($host,$user,$password,$database);
     if ($mysql->connect_error)
       die("Problemas con la conexion a la base de datos");
     $registros=$mysql->query("select COLUMN_TYPE from INFORMATION_SCHEMA.COLUMNS where TABLE_NAME='viviendas' and COLUMN_NAME='extras_vivienda'") or
@@ -97,17 +100,13 @@
       echo '<option value="'.$value.'">'.$value.'</option>';
     echo '</select>';
     ?>
-    <br>
-
-    Foto de la vivienda:
-    <input type="file" name="foto_vivienda" required>
-    <br>
+   
 
     Observaciones vivienda:
     <input type="text" name="observaciones_vivienda" required>
     <br>
     
-    <input type="submit" value="Confirmar">
+    <button type="sumbit" name="Confirmar">Confirmar</button>
   </form>
 </body>
 </html>

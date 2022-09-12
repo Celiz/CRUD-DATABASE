@@ -15,7 +15,8 @@
 
   
   <?php
-  $mysql =new mysqli($HOST,$USER,$PASSWORD,$DATABASE);
+    $mysql=new mysqli($host,$user,$password,$database);
+
 	if ($mysql->connect_error)
 	  die("Problemas con la conexion a la base de datos");
 
@@ -44,6 +45,7 @@
 
       ?>
       <br>
+      
       Zona de la vivienda:
       <?php
       //get enum values from database and create a select list
@@ -58,6 +60,7 @@
           echo '<option value="'.$value.'">'.$value.'</option>';
       echo '</select>';
       ?>
+
       <br>      
       Direccion de la vivienda:
       <input type="text" name="direccion_vivieda" size="10" value="<?php echo $reg['direccion_vivieda']; ?>">
@@ -66,7 +69,7 @@
       <?php
       function enum_values($table, $field)
       {
-         $mysql =new mysqli($HOST,$USER,$PASSWORD,$DATABASE);
+        $mysql=new mysqli($host,$user,$password,$database);
         if ($mysql->connect_error)
           die("Problemas con la conexion a la base de datos");
         $type = $mysql->query("SHOW COLUMNS FROM viviendas LIKE 'ndormitorios_vivienda'")->fetch_object()->Type;
@@ -87,12 +90,11 @@
       Precio:
       <input type="text" name="precio_vivienda" size="100" value="<?php echo $reg['precio_vivienda']; ?>">
       <br>
-      Tamaño de la vivienda:
+      TamaÃ±o de la vivienda:
       <input type="text" name="tamano_vivienda" size="100" value="<?php echo $reg['tamano_vivienda']; ?>">
       <br>
       Extras:
       <?php
-    
       $result = $mysql->query("SHOW COLUMNS FROM viviendas LIKE 'extras_vivienda'");
       $row = $result->fetch_array(MYSQLI_ASSOC);
       $enumList = explode("','",preg_replace("/(enum|set)\('(.+?)'\)/","\\2", $row['Type']));
@@ -108,6 +110,7 @@
       Foto de la vivienda:
       <input type="file" name="foto_vivienda">
       <br>
+
       Observaciones:
       <input type="text" name="observaciones_vivienda" size="100" value="<?php echo $reg['observaciones_vivienda']; ?>">
       <br>
@@ -121,4 +124,4 @@
   ?>
    
 </body>
-</html>
+</html>	

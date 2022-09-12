@@ -27,9 +27,8 @@
   </style>
 </head>  
 <body>
-  
   <?php
-	$mysql=new mysqli($HOST,$USER,$PASSWORD,$DATABASE);
+  $mysql=new mysqli($host,$user,$password,$database);
 	if ($mysql->connect_error)
 	  die("Problemas con la conexion a la base de datos");
   
@@ -67,8 +66,7 @@
       echo $reg['extras_vivienda'];
       echo '</td>';
       echo '<td>';
-      //show the image in another tab
-      echo '<a href="foto.php?id_vivienda='.$reg['id_vivienda'].'" target="_blank">Ver foto</a>';
+      echo "<a href='$reg[foto_vivienda]' target='_blank'><img src='$reg[foto_vivienda]' width='100' height='100'></a>";
       echo '</td>';
       echo '<td>';
       echo $reg['observaciones_vivienda'];

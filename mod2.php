@@ -1,10 +1,18 @@
 <?php
-   $mysql =new mysqli($HOST,$USER,$PASSWORD,$DATABASE);
+  $mysql=new mysqli($host,$user,$password,$database);
 	if ($mysql->connect_error)
 	  die("Problemas con la conexion a la base de datos");
 
-    $id = $mysql->insert_id;
-    $image = addslashes(file_get_contents($_FILES['foto_vivienda']['tmp_name']));
+
+    $foto = $_FILES['foto_vivienda']['name'];
+    $foto_temporal = $_FILES['foto_vivienda']['tmp_name'];
+    $destino = "image/".$foto;
+    copy($foto_temporal,$destino);
+
+    //update image in the database
+    $mysql->query("update viviendas set foto_vivienda='$destino' where id_vivienda=$_REQUEST[id_vivienda]") or
+      die($mysql->error);
+
 
     $mysql->query("update viviendas set 
     tipo_vivienda='$_REQUEST[tipo_vivienda]',
@@ -14,7 +22,7 @@
     precio_vivienda='$_REQUEST[precio_vivienda]',
     tamano_vivienda='$_REQUEST[tamano_vivienda]',
     extras_vivienda='$_REQUEST[extras_vivienda]',
-    foto_vivienda='$image',
+    foto_vivienda='$destino',
     observaciones_vivienda='$_REQUEST[observaciones_vivienda]'
     where id_vivienda='$_REQUEST[id_vivienda]'") or
 
